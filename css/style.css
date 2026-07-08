@@ -297,6 +297,71 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .photo--tall { aspect-ratio: 3 / 4; }
 
+/* laptop mockup with auto-scrolling website preview */
+
+.case__device { position: sticky; top: 6rem; }
+
+.laptop {
+  width: 100%;
+  filter: drop-shadow(0 20px 35px rgba(28, 27, 25, 0.22));
+}
+
+.laptop__screen {
+  aspect-ratio: 16 / 10;
+  background: var(--ink);
+  border: 10px solid var(--ink);
+  border-radius: 0.9rem 0.9rem 0 0;
+  overflow: hidden;
+}
+
+.laptop__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  animation: site-scroll 22s ease-in-out infinite alternate;
+}
+
+@keyframes site-scroll {
+  0%, 6%   { object-position: 50% 0%; }
+  94%, 100% { object-position: 50% 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laptop__screen img { animation: none; }
+}
+
+.laptop__base {
+  height: 0.9rem;
+  margin: 0 -6%;
+  background: var(--ink);
+  border-radius: 0 0 1rem 1rem;
+}
+
+.laptop__base::after {
+  content: "";
+  display: block;
+  width: 18%;
+  height: 0.35rem;
+  margin: 0 auto;
+  background: rgba(244, 241, 234, 0.25);
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.case__device-caption {
+  text-align: center;
+  margin-top: 1.6rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.case__device-caption a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.15rem;
+}
+
 /* ---------- 5. creative work ---------- */
 
 .work__header {
