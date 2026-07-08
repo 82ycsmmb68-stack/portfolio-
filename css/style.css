@@ -319,7 +319,7 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   height: 100%;
   object-fit: cover;
   object-position: 50% 0%;
-  animation: site-scroll 22s ease-in-out infinite alternate;
+  animation: site-scroll 50s ease-in-out infinite alternate;
 }
 
 @keyframes site-scroll {
