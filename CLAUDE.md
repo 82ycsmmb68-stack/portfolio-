@@ -6,10 +6,11 @@ specialist at Louis Vuitton, aimed at marketing & brand-communications
 roles abroad.
 
 - **Live site:** https://82ycsmmb68-stack.github.io/portfolio-/
-- **Working branch:** `claude/portfolio-screenshot-prompt-k6aujs` (all work so far; `main` is empty)
+- **Working branch:** `claude/portfolio-screenshot-prompt-vrnbwl`
+  (continues `claude/portfolio-screenshot-prompt-k6aujs`; `main` is empty)
 - **Deploys:** `.github/workflows/deploy-pages.yml` auto-deploys to GitHub
-  Pages on every push to `main` or the working branch. Pages source is set
-  to "GitHub Actions" in repo settings. No manual steps needed.
+  Pages on every push to `main` or either working branch. Pages source is
+  set to "GitHub Actions" in repo settings. No manual steps needed.
 
 ## Design system
 
