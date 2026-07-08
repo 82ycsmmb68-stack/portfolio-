@@ -9,8 +9,12 @@ roles abroad.
 - **Working branch:** `claude/portfolio-screenshot-prompt-vrnbwl`
   (continues `claude/portfolio-screenshot-prompt-k6aujs`; `main` is empty)
 - **Deploys:** `.github/workflows/deploy-pages.yml` auto-deploys to GitHub
-  Pages on every push to `main` or either working branch. Pages source is
-  set to "GitHub Actions" in repo settings. No manual steps needed.
+  Pages. Pages source is "GitHub Actions" in repo settings. **Gotcha:** the
+  `github-pages` environment's deployment branch policy only allows `main`
+  and `claude/portfolio-screenshot-prompt-k6aujs` — runs from other branches
+  fail instantly with no logs. Until the owner widens that policy in repo
+  Settings → Environments, deploy by fast-forwarding `…-k6aujs` to the same
+  commit (`git push origin HEAD:claude/portfolio-screenshot-prompt-k6aujs`).
 
 ## Design system
 
