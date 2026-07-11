@@ -38,3 +38,69 @@
 
   els.forEach(function (el) { observer.observe(el); });
 })();
+
+// Event carousel: center card active, faint peeks either side.
+// Hovering a peek slides it in (desktop); tap/click, arrows, dots and
+// arrow keys work everywhere.
+(function () {
+  var carousel = document.querySelector('.ev-carousel');
+  if (!carousel) return;
+
+  var cards = Array.prototype.slice.call(carousel.querySelectorAll('.ev-card'));
+  var dotsWrap = carousel.querySelector('.ev-carousel__dots');
+  var n = cards.length;
+  var current = 0;
+  var hoverTimer = null;
+
+  cards.forEach(function (_, i) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'ev-carousel__dot';
+    dot.setAttribute('aria-label', 'Show event ' + (i + 1) + ' of ' + n);
+    dot.addEventListener('click', function () { go(i); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function render() {
+    cards.forEach(function (card, i) {
+      var rel = (i - current + n) % n;
+      card.classList.toggle('is-active', rel === 0);
+      card.classList.toggle('is-next', rel === 1);
+      card.classList.toggle('is-prev', rel === n - 1);
+      card.setAttribute('aria-hidden', rel === 0 ? 'false' : 'true');
+    });
+    Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+      dot.classList.toggle('is-active', i === current);
+    });
+  }
+
+  function go(i) { current = ((i % n) + n) % n; render(); }
+  function step(d) { go(current + d); }
+
+  Array.prototype.forEach.call(carousel.querySelectorAll('.ev-carousel__arrow'), function (btn) {
+    btn.addEventListener('click', function () { step(parseInt(btn.dataset.dir, 10)); });
+  });
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      if (card.classList.contains('is-next')) step(1);
+      else if (card.classList.contains('is-prev')) step(-1);
+    });
+    card.addEventListener('mouseenter', function () {
+      if (card.classList.contains('is-active')) return;
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () {
+        if (card.classList.contains('is-next')) step(1);
+        else if (card.classList.contains('is-prev')) step(-1);
+      }, 220);
+    });
+    card.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
+  });
+
+  carousel.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  });
+
+  render();
+})();

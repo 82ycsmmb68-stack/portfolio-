@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -331,19 +331,38 @@
     </div>
     <div class="branding__events">
       <h3 class="group-heading">Events &amp; activations I coordinated</h3>
-      <div class="events__row">
-        <figure class="events__item">
-          <div class="photo photo--event tone-1"><span class="photo__label">Event photo</span></div>
-          <figcaption><span class="pill pill--static">Recruitment Events</span></figcaption>
-        </figure>
-        <figure class="events__item">
-          <div class="photo photo--event tone-2"><span class="photo__label">Event photo</span></div>
-          <figcaption><span class="pill pill--static">Graduate Hiring Events</span></figcaption>
-        </figure>
-        <figure class="events__item">
-          <div class="photo photo--event tone-3"><span class="photo__label">Event photo</span></div>
-          <figcaption><span class="pill pill--static">Brand Activations</span></figcaption>
-        </figure>
+      <div class="ev-carousel">
+        <div class="ev-carousel__stage">
+          <article class="ev-card" tabindex="0">
+            <p class="ev-card__meta">Tokyo · New Graduates</p>
+            <h4 class="ev-card__title">Graduate Hiring Events</h4>
+            <p class="ev-card__body">Recruitment events coordinated end-to-end — venue and vendor
+              logistics, candidate experience, and on-site coordination from
+              doors-open to close.</p>
+            <span class="pill pill--static">Recruitment Events</span>
+          </article>
+          <article class="ev-card" tabindex="0">
+            <p class="ev-card__meta">Candidates · Universities</p>
+            <h4 class="ev-card__title">Employer Branding Events</h4>
+            <p class="ev-card__body">Events that bring the employer brand to life — invitations,
+              programs, staffing and follow-up, built in collaboration with HR
+              teams and external partners.</p>
+            <span class="pill pill--static">Brand Experience</span>
+          </article>
+          <article class="ev-card" tabindex="0">
+            <p class="ev-card__meta">Louis Vuitton · Retail Teams</p>
+            <h4 class="ev-card__title">In-store Sessions &amp; Activations</h4>
+            <p class="ev-card__body">Morning product knowledge sessions I led for colleagues, plus
+              customer engagement ideas that brought energy and expertise to the
+              shop floor.</p>
+            <span class="pill pill--static">Team Activations</span>
+          </article>
+        </div>
+        <div class="ev-carousel__controls">
+          <button class="ev-carousel__arrow" data-dir="-1" type="button" aria-label="Previous event">←</button>
+          <div class="ev-carousel__dots"></div>
+          <button class="ev-carousel__arrow" data-dir="1" type="button" aria-label="Next event">→</button>
+        </div>
       </div>
     </div>
   </section>
