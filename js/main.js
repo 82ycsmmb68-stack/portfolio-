@@ -1,3 +1,25 @@
+// Always open on the cover: drop any #section marker from the URL,
+// start at the top, and keep menu clicks from writing markers back.
+(function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  if (location.hash) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+})();
+
 // Scroll-reveal: gently fade sections in as they enter the viewport.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
