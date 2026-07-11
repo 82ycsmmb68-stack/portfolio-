@@ -61,6 +61,58 @@
   els.forEach(function (el) { observer.observe(el); });
 })();
 
+// Case-study deck: numbered chapter tabs, arrows and keyboard flip
+// through pages; direction-aware slide-in.
+(function () {
+  var deck = document.querySelector('.deck');
+  if (!deck) return;
+
+  var pages = Array.prototype.slice.call(deck.querySelectorAll('.deck__page'));
+  var tabs = Array.prototype.slice.call(deck.querySelectorAll('.deck__tab'));
+  var progress = deck.querySelector('.deck__progress');
+  var n = pages.length;
+  var current = 0;
+
+  function render(direction) {
+    pages.forEach(function (page, i) {
+      var active = i === current;
+      if (active) page.style.setProperty('--enter-x', (direction < 0 ? -36 : 36) + 'px');
+      page.classList.toggle('is-active', active);
+      page.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    tabs.forEach(function (tab, i) {
+      tab.classList.toggle('is-active', i === current);
+    });
+    if (progress) progress.textContent = (current + 1) + ' / ' + n;
+  }
+
+  function go(i, direction) {
+    var next = Math.max(0, Math.min(n - 1, i));
+    if (next === current && direction !== 0) return;
+    current = next;
+    render(direction);
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { go(i, i >= current ? 1 : -1); });
+  });
+
+  Array.prototype.forEach.call(deck.querySelectorAll('.deck__arrow'), function (btn) {
+    btn.addEventListener('click', function () {
+      var d = parseInt(btn.dataset.dir, 10);
+      go(current + d, d);
+    });
+  });
+
+  deck.addEventListener('keydown', function (e) {
+    if (e.target.closest('.ev-carousel')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1, 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1, -1); }
+  });
+
+  render(1);
+})();
+
 // Event carousel: center card active, faint peeks either side.
 // Hovering a peek slides it in (desktop); tap/click, arrows, dots and
 // arrow keys work everywhere.
