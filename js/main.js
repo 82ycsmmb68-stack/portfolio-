@@ -64,9 +64,9 @@
 // Case-study deck: numbered chapter tabs, arrows and keyboard flip
 // through pages; direction-aware slide-in.
 (function () {
-  var deck = document.querySelector('.deck');
-  if (!deck) return;
+  Array.prototype.forEach.call(document.querySelectorAll('.deck'), initDeck);
 
+  function initDeck(deck) {
   var pages = Array.prototype.slice.call(deck.querySelectorAll('.deck__page'));
   var tabs = Array.prototype.slice.call(deck.querySelectorAll('.deck__tab'));
   var progress = deck.querySelector('.deck__progress');
@@ -111,6 +111,7 @@
   });
 
   render(1);
+  }
 })();
 
 // Event carousel: center card active, faint peeks either side.
