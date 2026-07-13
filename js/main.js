@@ -86,28 +86,36 @@
     if (progress) progress.textContent = (current + 1) + ' / ' + n;
   }
 
-  function go(i, direction) {
+  function scrollToChapterTop() {
+    var tabsEl = deck.querySelector('.deck__tabs');
+    if (!tabsEl) return;
+    var y = tabsEl.getBoundingClientRect().top + window.pageYOffset - 76;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  function go(i, direction, fromUser) {
     var next = Math.max(0, Math.min(n - 1, i));
     if (next === current && direction !== 0) return;
     current = next;
     render(direction);
+    if (fromUser) scrollToChapterTop();
   }
 
   tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { go(i, i >= current ? 1 : -1); });
+    tab.addEventListener('click', function () { go(i, i >= current ? 1 : -1, true); });
   });
 
   Array.prototype.forEach.call(deck.querySelectorAll('.deck__arrow'), function (btn) {
     btn.addEventListener('click', function () {
       var d = parseInt(btn.dataset.dir, 10);
-      go(current + d, d);
+      go(current + d, d, true);
     });
   });
 
   deck.addEventListener('keydown', function (e) {
     if (e.target.closest('.ev-carousel')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1, 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1, -1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1, 1, true); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1, -1, true); }
   });
 
   render(1);
