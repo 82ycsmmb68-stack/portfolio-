@@ -1146,12 +1146,12 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .wf-stack__pile {
   position: relative;
-  aspect-ratio: 3 / 3.6;
+  aspect-ratio: 3 / 3.4;
 }
 
 .wf-img {
   position: absolute;
-  width: 78%;
+  width: 70%;
   aspect-ratio: 3 / 4;
   background: #fbf9f5;
   border: 1px solid var(--greige);
@@ -1169,8 +1169,8 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   display: block;
 }
 
-.wf-img--back2 { top: 0; right: 0; z-index: 1; opacity: 0.85; }
-.wf-img--back1 { top: 7%; right: 9%; z-index: 2; opacity: 0.92; }
+.wf-img--back2 { top: 0; right: 0; z-index: 1; opacity: 0.9; }
+.wf-img--back1 { top: 8%; right: 15%; z-index: 2; opacity: 0.96; }
 .wf-img--front { bottom: 0; left: 0; z-index: 3; }
 
 .wf-stack figcaption {
