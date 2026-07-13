@@ -1137,6 +1137,96 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .type-specimen__meta em { text-transform: none; letter-spacing: 0.02em; font-size: 0.95rem; }
 
+.wf-stacks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin: 1.8rem 0 0.6rem;
+}
+
+.wf-stack__pile {
+  position: relative;
+  aspect-ratio: 3 / 3.6;
+}
+
+.wf-img {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 3 / 4;
+  background: #fbf9f5;
+  border: 1px solid var(--greige);
+  box-shadow: 0 14px 28px rgba(28, 27, 25, 0.14);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.wf-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.wf-img--back2 { top: 0; right: 0; z-index: 1; opacity: 0.85; }
+.wf-img--back1 { top: 7%; right: 9%; z-index: 2; opacity: 0.92; }
+.wf-img--front { bottom: 0; left: 0; z-index: 3; }
+
+.wf-stack figcaption {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.9rem;
+}
+
+.wf-feedback {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.6rem;
+  align-items: center;
+  border: 1px solid var(--ink);
+  padding: 1.4rem;
+  margin-top: 2rem;
+}
+
+.wf-feedback__visual { aspect-ratio: 16 / 10; }
+
+.wf-feedback__pile { position: relative; padding: 0 0 1.2rem 1.2rem; }
+
+.wf-feedback__slide {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--greige);
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(28, 27, 25, 0.14);
+}
+
+.wf-feedback__slide--back {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0.85;
+  z-index: -1;
+}
+
+.wf-feedback__label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.wf-feedback__text p:last-child { font-size: 0.9rem; }
+
+@media (max-width: 700px) {
+  .wf-stacks { grid-template-columns: 1fr; max-width: 17rem; margin-left: auto; margin-right: auto; }
+  .wf-feedback { grid-template-columns: 1fr; }
+}
+
 .wireframes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
