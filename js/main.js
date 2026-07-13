@@ -114,6 +114,37 @@
   }
 })();
 
+// Wireframe stacks: click a sheet to shuffle it to the front
+// (clicking the front sheet sends it to the back).
+(function () {
+  var classes = ['wf-img--front', 'wf-img--back1', 'wf-img--back2'];
+
+  Array.prototype.forEach.call(document.querySelectorAll('.wf-stack__pile'), function (pile) {
+    var sheets = Array.prototype.slice.call(pile.querySelectorAll('.wf-img'));
+
+    function posOf(sheet) {
+      for (var i = 0; i < classes.length; i++) {
+        if (sheet.classList.contains(classes[i])) return i;
+      }
+      return classes.length;
+    }
+
+    pile.addEventListener('click', function (e) {
+      var sheet = e.target.closest('.wf-img');
+      if (!sheet) return;
+      var order = sheets.slice().sort(function (a, b) { return posOf(a) - posOf(b); });
+      var i = order.indexOf(sheet);
+      var newOrder = i === 0
+        ? order.slice(1).concat(order[0])
+        : [sheet].concat(order.filter(function (s) { return s !== sheet; }));
+      newOrder.forEach(function (s, p) {
+        classes.forEach(function (c) { s.classList.remove(c); });
+        s.classList.add(classes[p]);
+      });
+    });
+  });
+})();
+
 // Event carousel: center card active, faint peeks either side.
 // Hovering a peek slides it in (desktop); tap/click, arrows, dots and
 // arrow keys work everywhere.
