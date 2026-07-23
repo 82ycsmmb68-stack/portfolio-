@@ -38,7 +38,7 @@
       var span = document.createElement('span');
       span.className = 'ltr';
       span.textContent = ch;
-      span.style.setProperty('--d', (0.15 + i * 0.055).toFixed(3) + 's');
+      span.style.setProperty('--d', (0.25 + i * 0.1).toFixed(3) + 's');
       name.appendChild(span);
       i++;
     });
