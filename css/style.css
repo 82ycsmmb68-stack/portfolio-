@@ -167,7 +167,34 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 .photo--cover {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(28, 27, 25, 0.25), rgba(28, 27, 25, 0.55)), var(--brown);
+  overflow: hidden;
+  background: var(--brown);
+}
+
+/* the photo itself, warmed and muted to fit the palette, with a slow zoom */
+.photo--cover::before {
+  content: "";
+  position: absolute;
+  inset: -3%;
+  background: url("../images/cover.jpg") center/cover no-repeat;
+  filter: saturate(0.62) contrast(1.02) sepia(0.14) brightness(0.96);
+  transform-origin: 55% 45%;
+  animation: cover-zoom 22s ease-out both;
+}
+
+/* faded wash on top: ink for legibility, cream fade into the page below */
+.photo--cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(28, 27, 25, 0.30), rgba(28, 27, 25, 0.46)),
+    linear-gradient(to bottom, rgba(244, 241, 234, 0) 52%, rgba(244, 241, 234, 0.96) 100%);
+}
+
+@keyframes cover-zoom {
+  from { transform: scale(1.14); }
+  to   { transform: scale(1); }
 }
 
 .cover__inner { position: relative; color: var(--cream); }
@@ -179,6 +206,20 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.05;
+  text-shadow: 0 2px 30px rgba(28, 27, 25, 0.35);
+}
+
+/* letter-by-letter entrance (spans injected by js) */
+.cover__name .ltr {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em);
+  animation: ltr-in 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes ltr-in {
+  to { opacity: 1; transform: none; }
 }
 
 .cover__subtitle {
@@ -188,8 +229,29 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   text-transform: uppercase;
 }
 
+.cover__subtitle,
+.cover .pill {
+  opacity: 0;
+  animation: cover-fade 1s ease forwards;
+}
+
+.cover__subtitle { animation-delay: 1.15s; }
+.cover .pill { animation-delay: 1.4s; }
+
+@keyframes cover-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
 .cover .pill { border-color: var(--cream); color: var(--cream); }
 .cover a.pill:hover { background: var(--cream); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .photo--cover::before { animation: none; transform: scale(1.02); }
+  .cover__name .ltr,
+  .cover__subtitle,
+  .cover .pill { opacity: 1; transform: none; animation: none; }
+}
 
 /* ---------- 2. about ---------- */
 

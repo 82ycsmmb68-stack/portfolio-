@@ -20,6 +20,31 @@
   });
 })();
 
+// Cover: split the name into letters and stagger them in on load.
+(function () {
+  var name = document.querySelector('.cover__name');
+  if (!name) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var nodes = Array.prototype.slice.call(name.childNodes);
+  name.textContent = '';
+  var i = 0;
+  nodes.forEach(function (node) {
+    if (node.nodeType === 1 && node.tagName === 'BR') {
+      name.appendChild(document.createElement('br'));
+      return;
+    }
+    (node.textContent || '').split('').forEach(function (ch) {
+      var span = document.createElement('span');
+      span.className = 'ltr';
+      span.textContent = ch;
+      span.style.setProperty('--d', (0.15 + i * 0.055).toFixed(3) + 's');
+      name.appendChild(span);
+      i++;
+    });
+  });
+})();
+
 // Scroll-reveal: gently fade sections in as they enter the viewport.
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
