@@ -87,6 +87,31 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .pill--static { cursor: default; }
 
+.pill--dark {
+  background: var(--espresso);
+  color: var(--cream);
+  border-color: var(--espresso);
+}
+
+/* ---------- case study pages: dark pull-quote card ---------- */
+
+.cs-quote {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin: 2.5rem -50vw 2.8rem;
+  background: var(--espresso);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.cs-quote .deck__quote {
+  color: var(--cream);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
 /* ---------- photo placeholders (swap for real images) ---------- */
 
 .photo {
@@ -869,7 +894,8 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
   align-items: center;
-  background: var(--cream-dark);
+  background: var(--espresso);
+  color: var(--cream);
   max-width: none;
 }
 
@@ -890,8 +916,13 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(244, 241, 234, 0.55);
 }
+
+.campaign .eyebrow { color: var(--gold); }
+.campaign .campaign__text p { color: rgba(244, 241, 234, 0.85); }
+.campaign.case-numbered::before { -webkit-text-stroke-color: rgba(244, 241, 234, 0.18); }
+.campaign .phone { border: 1px solid rgba(244, 241, 234, 0.15); }
 
 /* ---------- phone mockups ---------- */
 
