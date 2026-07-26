@@ -1405,6 +1405,173 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   .deck__tabs { gap: 0.4rem 1rem; }
 }
 
+/* ---------- case study: film reel (single-scroll, cinematic) ---------- */
+
+.reel__body {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.reel__body .deck__page-title {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.reel__body .deck__page-title:first-child { margin-top: 0; }
+
+.reel__titlecard {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin: 2.5rem -50vw 2.8rem;
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+}
+
+.reel__titlecard-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(244, 241, 234, 0.6);
+  margin-bottom: 1.4rem;
+}
+
+.reel__titlecard-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+  line-height: 1.6;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.reel__compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3rem;
+  margin: 1.6rem 0;
+}
+
+.reel__panel {
+  border: 1px solid var(--greige);
+  padding: 1.6rem;
+  aspect-ratio: 4 / 3.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.reel__panel--before { background: var(--cream-dark); }
+.reel__panel--after { background: var(--ink); color: var(--cream); }
+
+.reel__panel-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.reel__panel--after .reel__panel-label { color: rgba(244, 241, 234, 0.6); }
+
+.reel__lines { width: 100%; }
+
+.reel__lines i {
+  display: block;
+  height: 0.4rem;
+  background: var(--greige);
+  margin: 0.5rem 0;
+}
+
+.reel__play {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.8rem 0 0.8rem 1.3rem;
+  border-color: transparent transparent transparent var(--cream);
+  margin-bottom: 1rem;
+}
+
+.reel__panel-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.storyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.6rem 0 0.5rem;
+}
+
+.storyboard__visual {
+  aspect-ratio: 16 / 10;
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.6rem;
+}
+
+.storyboard__visual span {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.storyboard__frame figcaption {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.cast-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8rem 1.4rem;
+  margin: 1.6rem 0;
+}
+
+.cast-item { text-align: center; width: 6.5rem; }
+
+.cast-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-style: italic;
+  margin: 0 auto 0.6rem;
+}
+
+.cast-item p {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .reel__compare { grid-template-columns: 1fr; }
+  .storyboard { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ---------- effects: scroll reveal ---------- */
 
 .reveal {
