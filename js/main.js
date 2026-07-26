@@ -62,6 +62,7 @@
     '.work__grid figure', '.events__item',
     '.reel__titlecard', '.reel__compare', '.storyboard__frame', '.cast-item',
     '.cs-chapter', '.featured__item', '.cs-next',
+    '.skills__dark-head', '.skills__badge', '.skills__cert-frame',
     '.contact__inner'
   ];
 
@@ -70,7 +71,7 @@
     el.classList.add('reveal');
     // Stagger siblings inside grids so tiles cascade in.
     var parent = el.parentElement;
-    if (parent && (parent.classList.contains('work__grid') || parent.classList.contains('events__row') || parent.classList.contains('skills__groups') || parent.classList.contains('storyboard') || parent.classList.contains('cast-row') || parent.classList.contains('featured__list'))) {
+    if (parent && (parent.classList.contains('work__grid') || parent.classList.contains('events__row') || parent.classList.contains('skills__groups') || parent.classList.contains('storyboard') || parent.classList.contains('cast-row') || parent.classList.contains('featured__list') || parent.classList.contains('skills__badges') || parent.classList.contains('skills__cert-frames'))) {
       var index = Array.prototype.indexOf.call(parent.children, el);
       el.style.transitionDelay = (index % 4) * 90 + 'ms';
     }
