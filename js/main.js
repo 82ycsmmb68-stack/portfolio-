@@ -114,6 +114,18 @@
   });
 })();
 
+// Skills accordion: click a trigger to expand or collapse its panel.
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll('.accordion__item'), function (item) {
+    var trigger = item.querySelector('.accordion__trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function () {
+      var open = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+
 // Wireframe stacks: click a sheet to shuffle it to the front
 // (clicking the front sheet sends it to the back).
 (function () {
