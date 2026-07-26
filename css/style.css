@@ -287,7 +287,23 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
   align-items: center;
+  background: var(--espresso);
+  color: var(--cream);
+  max-width: none;
 }
+
+.about > * { max-width: 100%; }
+
+@media (min-width: 900px) {
+  .about { padding-left: calc((100vw - 1100px) / 2 + 1.5rem); padding-right: calc((100vw - 1100px) / 2 + 1.5rem); }
+}
+
+.about .eyebrow { color: var(--gold); }
+.about__text p { color: rgba(244, 241, 234, 0.85); }
+
+.about__philosophy { border-top-color: rgba(244, 241, 234, 0.2); }
+.about__philosophy .philosophy__quote { color: rgba(244, 241, 234, 0.6); }
+.about .pill { border-color: var(--cream); color: var(--cream); }
 
 .about__intro { margin-bottom: 1rem; font-size: 1.1rem; }
 
