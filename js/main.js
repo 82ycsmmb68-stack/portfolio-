@@ -61,6 +61,7 @@
     '.work__header', '.group-heading',
     '.work__grid figure', '.events__item',
     '.reel__titlecard', '.reel__compare', '.storyboard__frame', '.cast-item',
+    '.cs-chapter', '.featured__item', '.cs-next',
     '.contact__inner'
   ];
 
@@ -69,7 +70,7 @@
     el.classList.add('reveal');
     // Stagger siblings inside grids so tiles cascade in.
     var parent = el.parentElement;
-    if (parent && (parent.classList.contains('work__grid') || parent.classList.contains('events__row') || parent.classList.contains('skills__groups') || parent.classList.contains('storyboard') || parent.classList.contains('cast-row'))) {
+    if (parent && (parent.classList.contains('work__grid') || parent.classList.contains('events__row') || parent.classList.contains('skills__groups') || parent.classList.contains('storyboard') || parent.classList.contains('cast-row') || parent.classList.contains('featured__list'))) {
       var index = Array.prototype.indexOf.call(parent.children, el);
       el.style.transitionDelay = (index % 4) * 90 + 'ms';
     }
@@ -87,65 +88,29 @@
   els.forEach(function (el) { observer.observe(el); });
 })();
 
-// Case-study deck: numbered chapter tabs, arrows and keyboard flip
-// through pages; direction-aware slide-in.
+// Case-study pages: sticky chapter nav highlights the section currently
+// in view as the reader scrolls (anchor-scroll itself is handled by the
+// generic a[href^="#"] handler above).
 (function () {
-  Array.prototype.forEach.call(document.querySelectorAll('.deck'), initDeck);
+  Array.prototype.forEach.call(document.querySelectorAll('.cs-nav'), function (nav) {
+    var links = Array.prototype.slice.call(nav.querySelectorAll('.deck__tab'));
+    var sections = links
+      .map(function (link) { return document.getElementById(link.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return;
 
-  function initDeck(deck) {
-  var pages = Array.prototype.slice.call(deck.querySelectorAll('.deck__page'));
-  var tabs = Array.prototype.slice.call(deck.querySelectorAll('.deck__tab'));
-  var progress = deck.querySelector('.deck__progress');
-  var n = pages.length;
-  var current = 0;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        links.forEach(function (link) {
+          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
-  function render(direction) {
-    pages.forEach(function (page, i) {
-      var active = i === current;
-      if (active) page.style.setProperty('--enter-x', (direction < 0 ? -36 : 36) + 'px');
-      page.classList.toggle('is-active', active);
-      page.setAttribute('aria-hidden', active ? 'false' : 'true');
-    });
-    tabs.forEach(function (tab, i) {
-      tab.classList.toggle('is-active', i === current);
-    });
-    if (progress) progress.textContent = (current + 1) + ' / ' + n;
-  }
-
-  function scrollToChapterTop() {
-    var tabsEl = deck.querySelector('.deck__tabs');
-    if (!tabsEl) return;
-    var y = tabsEl.getBoundingClientRect().top + window.pageYOffset - 76;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  }
-
-  function go(i, direction, fromUser) {
-    var next = Math.max(0, Math.min(n - 1, i));
-    if (next === current && direction !== 0) return;
-    current = next;
-    render(direction);
-    if (fromUser) scrollToChapterTop();
-  }
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function () { go(i, i >= current ? 1 : -1, true); });
+    sections.forEach(function (section) { observer.observe(section); });
   });
-
-  Array.prototype.forEach.call(deck.querySelectorAll('.deck__arrow'), function (btn) {
-    btn.addEventListener('click', function () {
-      var d = parseInt(btn.dataset.dir, 10);
-      go(current + d, d, true);
-    });
-  });
-
-  deck.addEventListener('keydown', function (e) {
-    if (e.target.closest('.ev-carousel')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1, 1, true); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1, -1, true); }
-  });
-
-  render(1);
-  }
 })();
 
 // Wireframe stacks: click a sheet to shuffle it to the front
