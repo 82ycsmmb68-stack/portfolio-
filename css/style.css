@@ -1629,6 +1629,116 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
+/* ---------- case study pages: dark espresso theme throughout ---------- */
+
+body.cs-page { background: var(--espresso); color: var(--cream); }
+
+body.cs-page .cs-chapter p,
+body.cs-page .workstream p,
+body.cs-page .wf-feedback__text p { color: rgba(244, 241, 234, 0.85); }
+
+/* light "chip" components keep their original dark-on-cream text, even on the dark page */
+body.cs-page .ev-card,
+body.cs-page .roadmap__step,
+body.cs-page .funnel__bar { color: var(--ink); }
+body.cs-page .funnel__bar--accent { color: var(--cream); }
+
+body.cs-page .case-numbered::before { -webkit-text-stroke-color: rgba(244, 241, 234, 0.18); }
+body.cs-page .eyebrow { color: var(--gold); }
+body.cs-page .section__lede,
+body.cs-page .cs-scrolldown { color: rgba(244, 241, 234, 0.65); }
+
+body.cs-page .cs-nav {
+  background: rgba(43, 33, 24, 0.95);
+  border-bottom: 1px solid rgba(244, 241, 234, 0.12);
+}
+
+body.cs-page .deck__tab { color: rgba(244, 241, 234, 0.55); }
+body.cs-page .deck__tab:hover { color: var(--cream); }
+body.cs-page .deck__tab.is-active { color: var(--cream); border-bottom-color: var(--cream); }
+
+body.cs-page .pill { border-color: var(--cream); color: var(--cream); }
+body.cs-page .ev-card .pill { border-color: var(--ink); color: var(--ink); }
+
+body.cs-page .persona,
+body.cs-page .wf-feedback,
+body.cs-page .profile { border-color: rgba(244, 241, 234, 0.25); }
+
+body.cs-page .persona__label,
+body.cs-page .accordion__meta,
+body.cs-page .deck__kicker,
+body.cs-page .deck__questions li::before,
+body.cs-page .funnel__label,
+body.cs-page .funnel__year,
+body.cs-page .journey span:not(:last-child)::after,
+body.cs-page .mood__tile figcaption,
+body.cs-page .mood__note,
+body.cs-page .swatch,
+body.cs-page .type-specimen__meta,
+body.cs-page .wf-stack figcaption,
+body.cs-page .wf-feedback__label,
+body.cs-page .profile__number,
+body.cs-page .profile__note,
+body.cs-page .stat__caption,
+body.cs-page .cast-item p,
+body.cs-page .cs-next__label,
+body.cs-page .footer { color: rgba(244, 241, 234, 0.55); }
+
+body.cs-page .deck__facts,
+body.cs-page .case__stats,
+body.cs-page .deck__insight { border-color: rgba(244, 241, 234, 0.25); }
+
+body.cs-page .deck__questions li,
+body.cs-page .learnings li { border-bottom-color: rgba(244, 241, 234, 0.15); }
+
+body.cs-page .learnings li { color: rgba(244, 241, 234, 0.7); }
+body.cs-page .learnings li strong { color: var(--cream); }
+
+body.cs-page .type-specimen { border-color: rgba(244, 241, 234, 0.18); }
+
+body.cs-page .workstream a,
+body.cs-page .case__device-caption a { color: var(--cream); border-bottom-color: rgba(244, 241, 234, 0.4); }
+
+body.cs-page .laptop__screen { box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.14); }
+body.cs-page .laptop__base { box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.1); }
+
+body.cs-page .ev-carousel__arrow { border-color: var(--cream); color: var(--cream); }
+body.cs-page .ev-carousel__arrow:hover { background: var(--cream); color: var(--espresso); }
+body.cs-page .ev-carousel__dot { border-color: var(--cream); }
+body.cs-page .ev-carousel__dot.is-active { background: var(--cream); }
+
+body.cs-page .mood__tile .photo,
+body.cs-page .cast-avatar { box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.1); }
+body.cs-page .storyboard__visual { background: rgba(244, 241, 234, 0.08); border: 1px solid rgba(244, 241, 234, 0.16); }
+body.cs-page .reel__panel { border-color: rgba(244, 241, 234, 0.18); }
+body.cs-page .reel__panel--after { background: rgba(244, 241, 234, 0.08); }
+
+body.cs-page .cs-quote {
+  position: static;
+  left: auto;
+  right: auto;
+  width: auto;
+  margin: 3rem 0;
+  padding: 0;
+  background: none;
+}
+
+body.cs-page .reel__titlecard {
+  position: static;
+  left: auto;
+  right: auto;
+  width: auto;
+  max-width: 46rem;
+  margin: 0 auto 3rem;
+  padding: 2rem 1.5rem 0;
+  background: none;
+}
+
+body.cs-page .cs-next { color: var(--cream); border-top-color: rgba(244, 241, 234, 0.25); }
+body.cs-page .cs-next:hover { background: rgba(244, 241, 234, 0.05); }
+
+body.cs-page .footer { border-top-color: rgba(244, 241, 234, 0.12); }
+
 /* ---------- homepage: featured case studies ---------- */
 
 .featured__list {
@@ -1689,24 +1799,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   .featured__item { flex-wrap: wrap; }
   .featured__arrow { margin-left: 2.6rem; }
 }
-
-#case-studies {
-  background: var(--espresso);
-  color: var(--cream);
-  max-width: none;
-}
-
-@media (min-width: 900px) {
-  #case-studies { padding-left: calc((100vw - 1100px) / 2 + 1.5rem); padding-right: calc((100vw - 1100px) / 2 + 1.5rem); }
-}
-
-#case-studies .section__lede { color: rgba(244, 241, 234, 0.65); }
-#case-studies .featured__list { border-top-color: rgba(244, 241, 234, 0.25); }
-#case-studies .featured__item { border-bottom-color: rgba(244, 241, 234, 0.15); color: var(--cream); }
-#case-studies .featured__no { color: var(--gold); }
-#case-studies .featured__meta { color: rgba(244, 241, 234, 0.55); }
-#case-studies .featured__arrow { color: rgba(244, 241, 234, 0.55); }
-#case-studies .featured__item:hover .featured__arrow { color: var(--cream); }
 
 .deck__controls {
   display: flex;
@@ -2026,7 +2118,6 @@ figure.photo:hover > img,
 
   .about,
   .case,
-  .campaign,
   .branding { grid-template-columns: 1fr; gap: 2.5rem; }
 
   .work__grid { grid-template-columns: repeat(2, 1fr); }
@@ -2043,16 +2134,30 @@ figure.photo:hover > img,
   .timeline__item { grid-template-columns: 1fr; gap: 0.3rem; }
 
   .branding__phones .phone:nth-child(2) { margin-top: 0; }
+
+  .about__photo { max-width: 60%; margin: 0 auto; }
+}
+
+@media (max-width: 640px) {
+  .skills__signature { gap: 0.5rem; }
+
+  .skills__signature .pill {
+    padding: 0.38rem 0.85rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .about__photo { max-width: 240px; }
 }
 
 @media (max-width: 480px) {
-  .photography__grid,
-  .work__grid { grid-template-columns: 1fr; }
+  .photography__grid { grid-template-columns: 1fr; }
+
+  .work__grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
 
   .case__stats { grid-template-columns: 1fr; gap: 1.5rem; }
 
   .skills__groups { grid-template-columns: 1fr; }
 
-  .campaign__phones,
   .branding__phones { flex-wrap: wrap; }
 }
