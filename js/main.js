@@ -57,7 +57,6 @@
     '.skills__signature', '.skills__group',
     '.case__text', '.case__device',
     '.branding__text', '.branding__phones', '.branding__events',
-    '.campaign__text', '.campaign__phones',
     '.work__header', '.group-heading',
     '.work__grid figure', '.events__item',
     '.reel__titlecard', '.reel__compare', '.storyboard__frame', '.cast-item',
