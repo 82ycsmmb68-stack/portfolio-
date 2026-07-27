@@ -88,6 +88,29 @@
   els.forEach(function (el) { observer.observe(el); });
 })();
 
+// About: reveal the signature behind the portrait, as if it were being
+// signed, once the reader scrolls to it.
+(function () {
+  var signature = document.querySelector('.about__signature');
+  var frame = document.querySelector('.about__photo-frame');
+  if (!signature || !frame) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+
+  // Observe the (unclipped) frame rather than the signature itself: the
+  // signature's own clip-path reduces its box to zero width until revealed,
+  // which some browsers treat as never intersecting.
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        signature.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(frame);
+})();
+
 // Case-study pages: sticky chapter nav highlights the section currently
 // in view as the reader scrolls (anchor-scroll itself is handled by the
 // generic a[href^="#"] handler above).
