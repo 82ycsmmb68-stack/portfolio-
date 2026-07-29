@@ -128,6 +128,8 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 .tone-4 { background: var(--greige); }
 
 .photo > img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
