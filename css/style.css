@@ -311,33 +311,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .photo--portrait { aspect-ratio: 3 / 4; }
 
-/* ---------- about: animated signature behind the portrait ---------- */
-
-.about__photo-frame { position: relative; }
-
-.about__photo { position: relative; z-index: 1; }
-
-.about__signature {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  transform: translate(-50%, -50%) rotate(-5deg);
-  font-family: "Beau Rivage", cursive;
-  font-size: clamp(3.4rem, 10vw, 6rem);
-  color: rgba(176, 141, 87, 0.55);
-  white-space: nowrap;
-  pointer-events: none;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 2.4s cubic-bezier(0.4, 0.1, 0.2, 1);
-}
-
-.about__signature.is-visible { clip-path: inset(0 0 0 0); }
-
-@media (prefers-reduced-motion: reduce) {
-  .about__signature { clip-path: inset(0 0 0 0); transition: none; }
-}
-
 .about__philosophy {
   grid-column: 1 / -1;
   text-align: center;
