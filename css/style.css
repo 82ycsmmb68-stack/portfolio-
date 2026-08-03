@@ -140,6 +140,9 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 /* the portrait is a professional headshot, not editorial imagery: keep it true-to-life */
 .about__photo > img { filter: none; }
 
+/* finished graphic design work: show true to its original colors, not documentary photography */
+.photo--poster > img { filter: none; }
+
 .photo__label {
   font-family: var(--serif);
   font-style: italic;
