@@ -539,16 +539,39 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 }
 
 .skills__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
   background: var(--cream);
   color: var(--espresso);
   border-radius: 0.6rem;
-  padding: 1rem 0.6rem;
+  padding: 1.1rem 0.6rem;
   text-align: center;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
+
+.skills__badge-icon { width: 1.9rem; height: 1.9rem; flex-shrink: 0; }
+
+.skills__badge-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.skills__badge--text { padding: 1.4rem 0.6rem; }
+
+.skills__badge-word {
+  font-family: "Baloo 2", var(--sans);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.skills__badge-word--canva { color: #7D2AE8; }
+.skills__badge-word--excel { color: #1D6F42; }
+.skills__badge-word--fcp { color: #3a3a3a; font-size: 1rem; }
 
 .skills__cert-heading {
   text-align: center;
