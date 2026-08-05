@@ -554,6 +554,9 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .skills__badge-icon { width: 1.9rem; height: 1.9rem; flex-shrink: 0; }
 
+.skills__badge-icon--photo { object-fit: contain; }
+.skills__badge-icon--rounded { border-radius: 22%; }
+
 .skills__badge-label {
   font-size: 0.72rem;
   font-weight: 500;
@@ -569,8 +572,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   letter-spacing: 0.01em;
 }
 
-.skills__badge-word--canva { color: #7D2AE8; }
-.skills__badge-word--excel { color: #1D6F42; }
 .skills__badge-word--fcp { color: #3a3a3a; font-size: 1rem; }
 
 .skills__cert-heading {
