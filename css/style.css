@@ -583,6 +583,38 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   color: rgba(244, 241, 234, 0.45);
 }
 
+.skills__cert-frame--filled {
+  position: relative;
+  align-items: flex-end;
+  justify-content: flex-start;
+  border-style: solid;
+  border-color: rgba(244, 241, 234, 0.15);
+  padding: 0;
+  overflow: hidden;
+}
+
+.skills__cert-frame--filled img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.skills__cert-frame--filled figcaption {
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: var(--espresso);
+  background: rgba(244, 241, 234, 0.88);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0 0.3rem 0 0;
+}
+
 @media (max-width: 860px) {
   .skills__badges { grid-template-columns: repeat(3, 1fr); }
   .skills__cert-frames { grid-template-columns: 1fr; max-width: 20rem; margin: 0 auto; }
