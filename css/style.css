@@ -667,7 +667,30 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 }
 
 @media (max-width: 480px) {
-  .skills__badges { grid-template-columns: 1fr; }
+  .skills__badges { grid-template-columns: repeat(4, 1fr); gap: 0.55rem; }
+
+  .skills__badge {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    padding: 0.5rem;
+  }
+
+  .skills__badge-icon { width: 1.5rem; height: 1.5rem; }
+
+  /* visually hidden, not display:none, so screen readers still get the tool name */
+  .skills__badge-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 /* ---------- shared group heading ---------- */
