@@ -143,9 +143,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 /* finished graphic design work: show true to its original colors, not documentary photography */
 .photo--poster > img { filter: none; }
 
-/* a landscape-format poster needs a wider cell than the standard 4:5 portrait tile */
-.work__grid .photo.photo--wide { grid-column: span 2; aspect-ratio: 3 / 2; }
-
 .photo__label {
   font-family: var(--serif);
   font-style: italic;
