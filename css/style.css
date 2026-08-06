@@ -614,6 +614,12 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
   gap: 1.4rem;
 }
 
+.skills__cert-frames:has(> :only-child) {
+  grid-template-columns: 1fr;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
 .skills__cert-frame {
   aspect-ratio: 4 / 3;
   border: 1px dashed rgba(244, 241, 234, 0.35);
