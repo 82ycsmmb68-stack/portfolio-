@@ -1418,22 +1418,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 
 .deck__values { margin-bottom: 1.6rem; }
 
-.mood {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin: 0.4rem 0 0.8rem;
-}
-
-.mood__tile .photo { aspect-ratio: 4 / 3; }
-
-.mood__tile figcaption {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-top: 0.5rem;
-  line-height: 1.5;
-}
-
 .mood__note {
   font-size: 0.65rem;
   text-transform: uppercase;
@@ -1678,7 +1662,6 @@ a.pill:hover { background: var(--ink); color: var(--cream); }
 }
 
 @media (max-width: 640px) {
-  .mood { grid-template-columns: 1fr; }
   .wireframes, .profiles { grid-template-columns: 1fr; max-width: 16rem; margin-left: auto; margin-right: auto; }
   .type-specimens { grid-template-columns: 1fr; }
 }
@@ -1955,39 +1938,6 @@ body.cs-page .cs-next__label { color: rgba(244, 241, 234, 0.55); }
   font-size: 1rem;
 }
 
-.storyboard {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin: 1.6rem 0 0.5rem;
-}
-
-.storyboard__visual {
-  aspect-ratio: 16 / 10;
-  background: var(--espresso);
-  color: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.6rem;
-}
-
-.storyboard__visual span {
-  font-family: var(--serif);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-}
-
-.storyboard__frame figcaption {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  text-align: center;
-  margin-top: 0.6rem;
-}
-
 .cast-row {
   display: flex;
   flex-wrap: wrap;
@@ -2019,7 +1969,6 @@ body.cs-page .cs-next__label { color: rgba(244, 241, 234, 0.55); }
 
 @media (max-width: 700px) {
   .reel__compare { grid-template-columns: 1fr; }
-  .storyboard { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ---------- effects: scroll reveal ---------- */
