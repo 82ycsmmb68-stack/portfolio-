@@ -1882,62 +1882,6 @@ body.cs-page .cs-next__label { color: rgba(244, 241, 234, 0.55); }
   margin: 0 auto;
 }
 
-.reel__compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.3rem;
-  margin: 1.6rem 0;
-}
-
-.reel__panel {
-  border: 1px solid var(--greige);
-  padding: 1.6rem;
-  aspect-ratio: 4 / 3.2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.reel__panel--before { background: var(--cream-dark); }
-.reel__panel--after { background: var(--espresso); color: var(--cream); }
-
-.reel__panel-label {
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  margin-bottom: 1.2rem;
-}
-
-.reel__panel--after .reel__panel-label { color: rgba(244, 241, 234, 0.6); }
-
-.reel__lines { width: 100%; }
-
-.reel__lines i {
-  display: block;
-  height: 0.4rem;
-  background: var(--greige);
-  margin: 0.5rem 0;
-}
-
-.reel__play {
-  display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0.8rem 0 0.8rem 1.3rem;
-  border-color: transparent transparent transparent var(--cream);
-  margin-bottom: 1rem;
-}
-
-.reel__panel-caption {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1rem;
-}
-
 .cast-row {
   display: flex;
   flex-wrap: wrap;
@@ -1967,9 +1911,6 @@ body.cs-page .cs-next__label { color: rgba(244, 241, 234, 0.55); }
   line-height: 1.4;
 }
 
-@media (max-width: 700px) {
-  .reel__compare { grid-template-columns: 1fr; }
-}
 
 /* ---------- effects: scroll reveal ---------- */
 

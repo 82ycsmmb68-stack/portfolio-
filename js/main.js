@@ -59,7 +59,7 @@
     '.branding__text', '.branding__phones', '.branding__events',
     '.work__header', '.group-heading',
     '.work__grid figure', '.events__item',
-    '.reel__titlecard', '.reel__compare', '.cast-item',
+    '.reel__titlecard', '.cast-item',
     '.cs-chapter', '.featured__item', '.cs-next',
     '.skills__dark-head', '.skills__badge', '.skills__cert-frame',
     '.contact__inner'
