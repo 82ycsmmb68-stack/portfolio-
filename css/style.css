@@ -2167,7 +2167,12 @@ figure.photo:hover > img,
 
   .branding__phones .phone:nth-child(2) { margin-top: 0; }
 
-  .about__photo { max-width: 60%; margin: 0 auto; }
+  /* width (not max-width): .about__photo's only children are absolutely
+     positioned (the img, the label), so it has no in-flow content to
+     shrink-to-fit against once margin:auto takes it out of grid stretch —
+     it was collapsing to 0x0 on every viewport <=860px (i.e. all phones
+     and tablets), hiding the portrait entirely. */
+  .about__photo { width: 60%; margin: 0 auto; }
 }
 
 @media (max-width: 640px) {
@@ -2179,7 +2184,7 @@ figure.photo:hover > img,
     letter-spacing: 0.1em;
   }
 
-  .about__photo { max-width: 240px; }
+  .about__photo { width: 240px; }
 }
 
 @media (max-width: 480px) {
@@ -2192,4 +2197,41 @@ figure.photo:hover > img,
   .skills__groups { grid-template-columns: 1fr; }
 
   .branding__phones { flex-wrap: wrap; }
+}
+
+/* ---------- print (PDF export) ---------- */
+
+@media print {
+  html, body {
+    background: var(--cream);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .nav,
+  .cs-nav,
+  .cs-scrolldown { display: none !important; }
+
+  .cover { min-height: 100vh; }
+
+  .case__device,
+  .accordion__panel { position: static; }
+
+  /* skills accordion: JS-driven open/close doesn't run for a static PDF, so show both panels expanded */
+  .accordion__panel {
+    grid-template-rows: 1fr !important;
+  }
+  .accordion__panel > div { overflow: visible !important; }
+  .accordion__icon { display: none !important; }
+
+  h1, h2, h3 { break-after: avoid; }
+
+  .about__photo,
+  .timeline__item,
+  .skills__group,
+  .skills__cert-frame,
+  .work__grid figure,
+  .events__item,
+  .featured__item,
+  .contact__inner { break-inside: avoid; }
 }
