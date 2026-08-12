@@ -2104,14 +2104,28 @@ figure.photo:hover > img,
 
   .cover { min-height: 100vh; }
 
-  .case__device,
-  .accordion__panel { position: static; }
+  .case__device { position: static; }
 
-  /* skills accordion: JS-driven open/close doesn't run for a static PDF, so show both panels expanded */
-  .accordion__panel {
-    grid-template-rows: 1fr !important;
+  /* the site's generous whitespace (6.5rem section padding, big lede
+     margins) is designed for a leisurely scroll, not a page-constrained
+     print document — tighten it so more content fits per page */
+  .section { padding: 2.2rem 1.5rem; }
+  .heading { margin-bottom: 1rem; }
+  .section__lede { margin: -0.3rem auto 1.5rem; }
+  .featured__list { margin-top: 1rem; }
+  .featured__item { padding: 1.2rem 0; }
+
+  /* skills accordion: JS-driven open/close doesn't run for a static PDF, so
+     show both panels expanded. Drop the grid-template-rows(0fr/1fr) height
+     trick entirely for print — a 1fr row track doesn't fragment across
+     pages the way a plain block does, and was leaving huge blank gaps. */
+  .accordion__panel,
+  .accordion__panel > div {
+    display: block !important;
+    grid-template-rows: unset !important;
+    height: auto !important;
+    overflow: visible !important;
   }
-  .accordion__panel > div { overflow: visible !important; }
   .accordion__icon { display: none !important; }
 
   h1, h2, h3 { break-after: avoid; }
@@ -2122,19 +2136,17 @@ figure.photo:hover > img,
   .skills__cert-frame,
   .work__grid figure,
   .events__item,
-  .featured__item,
-  .contact__inner { break-inside: avoid; }
+  .contact__inner,
+  .cs-next { break-inside: avoid; }
 
-  /* major sections start on a fresh page so a colored section never gets
-     cut mid-way, leaving a stray blank strip before the next page */
+  /* only force a fresh page where content is naturally long enough that
+     the previous page is already dense (forcing a break where content is
+     short just strands blank space at the end of the shorter page). The
+     divider is the exception: break on it (not the section after it) so
+     the section that follows starts right behind it on the new page,
+     instead of stranding the divider alone at the bottom of the old one. */
   #about,
-  #timeline,
-  #skills,
-  #case-studies,
-  #creative-work,
-  #contact,
-  .skills__dark,
-  .cs-next { break-before: page; }
+  .divider { break-before: page; }
 
   /* event carousel is built for click-to-cycle interaction (ghost cards
      peeking from the sides, arrows, dots) — none of that applies to a
