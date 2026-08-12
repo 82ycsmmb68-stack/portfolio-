@@ -2124,4 +2124,34 @@ figure.photo:hover > img,
   .events__item,
   .featured__item,
   .contact__inner { break-inside: avoid; }
+
+  /* major sections start on a fresh page so a colored section never gets
+     cut mid-way, leaving a stray blank strip before the next page */
+  #about,
+  #timeline,
+  #skills,
+  #case-studies,
+  #creative-work,
+  #contact,
+  .skills__dark,
+  .cs-next { break-before: page; }
+
+  /* event carousel is built for click-to-cycle interaction (ghost cards
+     peeking from the sides, arrows, dots) — none of that applies to a
+     static document, so show only the active card as a plain block */
+  .ev-carousel__controls { display: none !important; }
+
+  .ev-carousel__stage { position: static; height: auto; overflow: visible; }
+
+  .ev-card { display: none !important; }
+
+  .ev-card.is-active {
+    display: flex !important;
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none;
+    margin: 0 auto;
+    break-inside: avoid;
+  }
 }
